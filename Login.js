@@ -30,8 +30,8 @@ const Login = () => {
 
 
     return(
-        <div>
-            <Grid>
+        <div style={{background:"grey"}}>
+            <Grid style={{display:"flex",justifyContent:"center",flex:1,height:'100vh'}}>
                 <Paper elvation={10} style={paperstyle}>
                     <Grid align='center'>
                         <Avatar style={avatarstyle}><LockRoundedIcon /></Avatar>
