@@ -5,6 +5,7 @@ import { Dialog } from "@material-ui/core";
 import { DialogContent } from "@material-ui/core";
 
 import { DialogTitle } from "@material-ui/core";
+import Foodpopform from "./Foodpopform";
 
 export default function Foodpopup() {
   const [open, setOpen] = React.useState(false);
@@ -19,12 +20,14 @@ export default function Foodpopup() {
 
   return (
     <div style={{display:"flex",justifyContent:"center",marginTop:-60,position:"relative"}}>
-      <Button  variant="contained" onClick={handleClickOpen}>
+      <Button  variant="contained" color="primary" onClick={handleClickOpen}>
         Add Food
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Food Details</DialogTitle>
-        <DialogContent></DialogContent>
+        <DialogContent>
+            <Foodpopform />
+        </DialogContent>
       </Dialog>
     </div>
   );
