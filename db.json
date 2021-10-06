@@ -1,0 +1,16 @@
+{
+  "food": [
+    {
+      "id": 1,
+      "fname": "apple",
+      "fdetail": "rich in fiber",
+      "fcal": "123"
+    },
+    {
+      "fname": "orange",
+      "fdetail": "vitamin A",
+      "fcal": "89",
+      "id": 2
+    }
+  ]
+}
