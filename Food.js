@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import {Tab,Tabs, Button} from '@material-ui/core';
 
 import './Food.css'
@@ -7,6 +7,18 @@ import Foodpopup from './Foodpopup';
 
 
 function Food() {
+
+    const [display, setDisplay] = useState([]);
+    useEffect(()=>{
+        showDetails();
+
+    },[])
+    const showDetails = async() => {
+        const response= await fetch("http://localhost:3333/food")
+        .then((res)=>res.json())
+        .then((data)=>setDisplay(data))
+    }
+
     const history =useHistory();
     return (<>
         <div className="sidebar">
@@ -29,7 +41,22 @@ function Food() {
 
             
         </div>
+        <div>
+        {display.map(post =>{
+                return(
+                    
+                    <div style={{display:"flex",flexDirection:"column",justifyContent:"center"}}> 
+                        <p >{post.fname}</p>
+                        <p>{post.fdetail}</p>
+                        <p>{post.fcal}</p>
+                    </div>
+                )
+            })}
+        </div>
         <div >
+
+        
+
             <Foodpopup />
         </div>
         </>
