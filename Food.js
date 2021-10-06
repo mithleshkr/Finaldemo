@@ -3,11 +3,12 @@ import {Tab,Tabs, Button} from '@material-ui/core';
 
 import './Food.css'
 import { useHistory } from 'react-router';
+import Foodpopup from './Foodpopup';
 
 
 function Food() {
     const history =useHistory();
-    return (
+    return (<>
         <div className="sidebar">
             <div className="tab" >
             <br/> <br/> <br/><br/><br/><br/><br/>
@@ -28,6 +29,10 @@ function Food() {
 
             
         </div>
+        <div >
+            <Foodpopup />
+        </div>
+        </>
     )
 }
 
