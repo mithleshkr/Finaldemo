@@ -13,11 +13,22 @@ function Food() {
         showDetails();
 
     },[])
+    function deleteUser(id)
+    {
+        fetch(`http://localhost:3333/food/${id}`,{
+            method:'DELETE'
+        }).then((result)=>{
+            result.json().then((resp)=>{
+                console.warn(resp)
+            })
+        })
+    }
     const showDetails = async() => {
         const response= await fetch("http://localhost:3333/food")
         .then((res)=>res.json())
         .then((data)=>setDisplay(data))
     }
+
 
     const history =useHistory();
     return (<>
@@ -46,9 +57,11 @@ function Food() {
                 return(
                     
                     <div style={{display:"flex",flexDirection:"column",justifyContent:"center"}}> 
+                        <p>{post.id}</p>
                         <p >{post.fname}</p>
                         <p>{post.fdetail}</p>
                         <p>{post.fcal}</p>
+                        <button onClick={()=>deleteUser(post.id)}>Delete</button>
                     </div>
                 )
             })}
