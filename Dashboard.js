@@ -27,7 +27,21 @@ function Dashboard() {
 
             </div>
             <div style={{display:"flex",flex:7,height:"100vh",flexDirection:"column"}}>
-           
+                <div style={{display:"flex",flexDirection:"row",justifyContent:"space-evenly"}}>
+                <div style={{display:"flex",height:"30vh",backgroundColor:"blue",width:"400px",alignItems:"center",marginTop:50,justifyContent:"center"}}>
+                    Total Food
+                </div>
+
+                <div style={{display:"flex",height:"30vh",backgroundColor:"blue",width:"400px",alignItems:"center",marginTop:50,justifyContent:"center"}}>
+                    Total User
+                </div>
+                </div>
+                <div style={{display:"flex",justifyContent:"center"}}> 
+                <div style={{display:"flex",height:"30vh",backgroundColor:"blue",width:"400px",alignItems:"center",marginTop:50,justifyContent:"center"}}>
+                    Recently Added users
+                </div>
+                </div>
+
         
 
             </div>
