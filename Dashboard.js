@@ -62,11 +62,13 @@ function Dashboard() {
                 {display.map(post =>{
                     return(
                     
-                <div style={{display:"flex",height:"30vh",backgroundColor:"whitesmoke",width:"400px",alignItems:"center",marginTop:50,justifyContent:"center",flexDirection:"column"}}>
+                <div style={{display:"flex",height:"30vh",backgroundColor:"whitesmoke",width:"400px",marginTop:50,flexDirection:"column"}}>
                     
-                    <p>{post.uname}</p> <br />
+                    <div style={{display:"flex",flexDirection:"row",justifyContent:"space-evenly"}}>
+                    <p>{post.uname}</p> 
                     <p>{post.username}</p>
-                    <p>{post.he}</p>
+                    
+                    </div>
                 </div>
                 
                     )
