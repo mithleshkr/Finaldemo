@@ -46,19 +46,28 @@ function Dashboard() {
                 
                 <div style={{display:"flex",flexDirection:"row",justifyContent:"space-evenly"}}>
                 <div style={{display:"flex",height:"30vh",backgroundColor:"whitesmoke",width:"400px",alignItems:"center",marginTop:50,justifyContent:"center"}}>
-                    Total Food
+                    <h3>Total Food</h3>
                 </div>
 
                 <div style={{display:"flex",height:"30vh",backgroundColor:"whitesmoke",width:"400px",alignItems:"center",marginTop:50,justifyContent:"center"}}>
-                    Total User
-                </div>
+                    <h3>Total User</h3>
                 </div>
                 
+                
+                </div>
+                <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
+                <div>
+                <h3 style={{display:"flex",alignItems:"center",marginLeft:50}}>Total Number of Food</h3>
+                </div>
+                <div>
+                <h3 style={{display:"flex",alignItems:"center",marginLeft:300}}>Total Number of Users</h3>
+                </div>
+                </div>
                         
                     
-                
+               
                 <div style={{display:"flex",justifyContent:"center"}}>
-                    
+                   
                 {display.map(post =>{
                     return(
                     
@@ -73,9 +82,12 @@ function Dashboard() {
                 
                     )
                 })}
+                
                 </div>
 
-        
+                <div>
+                <h3 style={{display:"flex",justifyContent:"center",alignItems:"center"}}>Recently Added Users</h3>   
+                </div> 
 
             </div>
            
