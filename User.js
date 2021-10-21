@@ -19,7 +19,7 @@ function User() {
             method:'DELETE'
         }).then((result)=>{
             result.json().then((resp)=>{
-                alert("Are You Sure want to Delete?")
+                alert("User deleted successfully")
             })
         })
     }
@@ -64,6 +64,44 @@ function User() {
                     <tr>
                     <td >Calorie</td>
                 </tr> */}
+                <div style={{display:"flex",flexDirection:"row"}}>
+               <table style={{display:"flex",flexDirection:"row",marginLeft:50}}>
+                   <tr >
+                       <th>Name</th>
+                       
+                   </tr>
+                   </table>
+                   <table style={{display:"flex",flexDirection:"row",marginLeft:90}}>
+                   <tr >
+                       <th>Age</th>
+                       
+                   </tr>
+                   </table>
+                   <table style={{display:"flex",flexDirection:"row",marginLeft:60}}>
+                   <tr >
+                       <th>Height(cm)</th>
+                       
+                   </tr>
+                   </table>
+                   <table style={{display:"flex",flexDirection:"row",marginLeft:30}}>
+                   <tr >
+                       <th>Weight</th>
+                       
+                   </tr>
+                   </table>
+                   <table style={{display:"flex",flexDirection:"row",marginLeft:70}}>
+                   <tr >
+                       <th>username</th>
+                       
+                   </tr>
+                   </table>
+                   <table style={{display:"flex",flexDirection:"row",marginLeft:120}}>
+                   <tr >
+                       <th>password</th>
+                       
+                   </tr>
+                   </table>
+                   </div>
             {display.map(post =>{
                 return(
 
@@ -71,12 +109,12 @@ function User() {
                     <div style={{width:"100%",height:"10vh"}}>
                        
                        
-                         <div style={{display:"flex",flexDirection:"row",alignItems:"center",flex:1,justifyContent:"space-between"}}>
+                         <div style={{display:"flex",flexDirection:"row",alignItems:"center",flex:1,justifyContent:"space-around",width:1205}}>
                               
                         
                         
 
-                        <card style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",flex:1,}}>
+                        <card style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-around",flex:1,border:"2px solid grey",backgroundColor:"whitesmoke"}}>
                         
                         
                         <p>{post.uname}</p>
@@ -95,6 +133,7 @@ function User() {
                         </Button>
                         </Link>
                         <Button 
+                        
                         color="primary"
                         startIcon={<DeleteIcon />}
                         variant="contained"
@@ -116,7 +155,7 @@ function User() {
 
 
             
-            <div style={{display:"flex",flex:7,height:"100vh",flexDirection:"column"}}>
+            <div style={{display:"flex",flex:7,height:"100vh",flexDirection:"column",marginLeft:-650}}>
            
             <Userpopup />
 
