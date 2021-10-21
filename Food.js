@@ -30,7 +30,7 @@ function Food() {
             method:'DELETE'
         }).then((result)=>{
             result.json().then((resp)=>{
-                alert("Are You Sure want to Delete?")
+                alert("Food Deletd Sucessfully")
             })
         })
     }
@@ -79,9 +79,29 @@ function Food() {
                     <tr>
                     <td >Calorie</td>
                 </tr> */}
+                <div style={{display:"flex",flexDirection:"row"}}>
+               <table style={{display:"flex",flexDirection:"row",marginLeft:100}}>
+                   <tr >
+                       <th>Name</th>
+                       
+                   </tr>
+                   </table>
+                   <table style={{display:"flex",flexDirection:"row",marginLeft:200}}>
+                   <tr >
+                       <th>Details</th>
+                       
+                   </tr>
+                   </table>
+                   <table style={{display:"flex",flexDirection:"row",marginLeft:170}}>
+                   <tr >
+                       <th>Calorie</th>
+                       
+                   </tr>
+                   </table>
+                   </div>
             {display.map(post =>{
                 return(
-
+                    
                     
                     <div style={{width:"100%",height:"10vh"}}>
                        
@@ -91,10 +111,10 @@ function Food() {
                         
                         
 
-                        <card style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-around",flex:1,}}>
+                        <card style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-around",flex:1,border:"2px solid grey",backgroundColor:"whitesmoke"}}>
                         {/* <p>{post.id}</p> */}
                         
-                        <p>{post.fname}</p>
+                        <p >{post.fname}</p>
                         <p>{post.fdetail}</p>
                         <p>{post.fcal}</p>
                         <Link to={"Editfood/"+post.id}>
@@ -123,7 +143,7 @@ function Food() {
                     
                 )
             })}
-
+                
             </div>
             <div style={{marginTop:600,position:"absolute",marginLeft:700}}>
             <Foodpopup />
