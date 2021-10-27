@@ -15,8 +15,9 @@ function Dashboard() {
         const res= await fetch("http://localhost:3333/user")
         .then((res)=>res.json())
         .then((data)=>setDisplay(data))
+        
     }
-
+    
 
 
 
@@ -43,51 +44,46 @@ function Dashboard() {
 
             </div>
             <div style={{display:"flex",flex:7,height:"100vh",flexDirection:"column"}}>
-                
-                <div style={{display:"flex",flexDirection:"row",justifyContent:"space-evenly"}}>
-                <div style={{display:"flex",height:"30vh",backgroundColor:"whitesmoke",width:"400px",alignItems:"center",marginTop:50,justifyContent:"center"}}>
-                    <h3>Total Food</h3>
-                </div>
-
-                <div style={{display:"flex",height:"30vh",backgroundColor:"whitesmoke",width:"400px",alignItems:"center",marginTop:50,justifyContent:"center"}}>
-                    <h3>Total User</h3>
-                </div>
-                
-                
-                </div>
-                <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
-                <div>
-                <h3 style={{display:"flex",alignItems:"center",marginLeft:50}}>Total Number of Food</h3>
-                </div>
-                <div>
-                <h3 style={{display:"flex",alignItems:"center",marginLeft:300}}>Total Number of Users</h3>
-                </div>
-                </div>
-                        
-                    
-               
-                <div style={{display:"flex",justifyContent:"center"}}>
-                   
-                {display.map(post =>{
-                    return(
-                    
-                <div style={{display:"flex",height:"30vh",backgroundColor:"whitesmoke",width:"400px",marginTop:50,flexDirection:"column"}}>
-                    
-                    <div style={{display:"flex",flexDirection:"row",justifyContent:"space-evenly"}}>
-                    <p>{post.uname}</p> 
-                    <p>{post.username}</p>
-                    
+                <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly",border:"2px solid black",height:"30vh"}}>
+                    <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
+                        <h3>Recently Added User</h3>
                     </div>
+                    
+                {display.map(post=>{
+                    return(
+                        
+                   
+                <div style={{display:"flex",height:"30vh",width:"200px"}}>
+                  <div style={{display:"flex"}}>
+                      <div style={{display:"flex",flexDirection:"column"}}>
+                  <div>
+                        <p>name</p>
+                    </div>
+                    <div>
+                        <p>username</p>
+                    </div>
+                    </div>
+                    <div style={{display:"flex",flexDirection:"column"}}>
+                    <div style={{display:"flex",flexDirection:"column"}}>
+                      <h3 style={{marginTop:10}}> {post.uname}</h3>
+                      </div> 
+                      </div>
+                      
+                      <div style={{display:"flex",flexDirection:"column"}}>
+                      <h3 style={{display:"flex",flexDirection:"column",marginTop:65,marginLeft:-50}}>{post.username}</h3> 
+                  </div>
+                  </div>
                 </div>
-                
-                    )
+                 )
                 })}
-                
+                </div>
+                <div style={{border:"2px solid black",height:"30vh"}}>
+                    <p>Total Food</p>
                 </div>
 
-                <div>
-                <h3 style={{display:"flex",justifyContent:"center",alignItems:"center"}}>Recently Added Users</h3>   
-                </div> 
+                <div style={{border:"2px solid black",height:"30vh"}}>
+                    <p>Total User</p>
+                </div>
 
             </div>
            
