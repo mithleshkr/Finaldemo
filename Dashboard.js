@@ -44,46 +44,53 @@ function Dashboard() {
 
             </div>
             <div style={{display:"flex",flex:7,height:"100vh",flexDirection:"column"}}>
-                <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly",border:"2px solid black",height:"30vh"}}>
-                    <div style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
-                        <h3>Recently Added User</h3>
-                    </div>
-                    
-                {display.map(post=>{
-                    return(
-                        
-                   
-                <div style={{display:"flex",height:"30vh",width:"200px"}}>
-                  <div style={{display:"flex"}}>
-                      <div style={{display:"flex",flexDirection:"column"}}>
-                  <div>
-                        <p>name</p>
-                    </div>
-                    <div>
-                        <p>username</p>
-                    </div>
-                    </div>
-                    <div style={{display:"flex",flexDirection:"column"}}>
-                    <div style={{display:"flex",flexDirection:"column"}}>
-                      <h3 style={{marginTop:10}}> {post.uname}</h3>
-                      </div> 
-                      </div>
-                      
-                      <div style={{display:"flex",flexDirection:"column"}}>
-                      <h3 style={{display:"flex",flexDirection:"column",marginTop:65,marginLeft:-50}}>{post.username}</h3> 
-                  </div>
-                  </div>
-                </div>
-                 )
-                })}
-                </div>
-                <div style={{border:"2px solid black",height:"30vh"}}>
-                    <p>Total Food</p>
-                </div>
+               <div style={{display:"flex",flexDirection:"row",justifyContent:"space-evenly",marginTop:60}}>
+                   <div style={{height:"80vh",backgroundColor:"whitesmoke",width:"300px"}}>
+                        <div style={{display:"flex",justifyContent:"center"}}>
+                            <h1>1</h1>
+                        </div>
+                        <div style={{display:"flex",marginTop:350,justifyContent:"center"}}>
+                            <p>Total Number of User</p>
+                        </div>
 
-                <div style={{border:"2px solid black",height:"30vh"}}>
-                    <p>Total User</p>
-                </div>
+                   </div>
+                   <div style={{height:"80vh",backgroundColor:"whitesmoke",width:"300px"}}>
+                        <div style={{display:"flex",justifyContent:"center"}}>
+                            <h1>2</h1>
+                        </div>
+                        <div style={{display:"flex",marginTop:350,justifyContent:"center"}}>
+                            <p>Total number of Food</p>
+                        </div>
+                   </div>
+                   <div style={{height:"80vh",backgroundColor:"whitesmoke",width:"300px"}}>
+                       <div style={{display:"flex",justifyContent:"space-evenly"}}>
+                        <div>
+                            <p>Name</p>
+                        </div>
+                        <div>
+                            <p>UserName</p>
+                        </div>
+                        </div>
+                        {display.map(post =>{
+                            return(
+                                
+                        <div style={{display:"flex",justifyContent:"space-evenly"}}>
+                        <div>
+                            <h5>{post.uname}</h5>
+                        </div>
+                        <div>
+                            <h5>{post.username}</h5>
+                        </div>
+                        </div>
+                        
+                        )
+                    })}
+                        <div style={{display:"flex",justifyContent:"center",marginTop:300,alignItems:"center"}}>
+                            <p>Recently Added User</p>
+                        </div>
+                   </div>
+               </div>
+                
 
             </div>
            
