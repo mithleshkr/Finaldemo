@@ -4,6 +4,12 @@ import  EditIcon  from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
+import { Dialog } from "@material-ui/core";
+import { DialogContent } from "@material-ui/core";
+
+import { DialogTitle } from "@material-ui/core";
+import Userpopform from "./Userpopform";
+import Prefilled from './Prefilled';
 
 
 import './Food.css'
@@ -20,6 +26,11 @@ import {Link} from 'react-router-dom';
 function Food() {
 
     const [display, setDisplay] = useState([]);
+
+    const [fname, setFname] = useState("");
+    const [fdetail, setFdetails] = useState("");
+    const [fcal, setFcal] = useState("");
+
     useEffect(()=>{
         showDetails();
 
@@ -34,11 +45,37 @@ function Food() {
             })
         })
     }
+
+   
+
     const showDetails = async() => {
-        const res= await fetch("http://localhost:3333/food")
-        .then((res)=>res.json())
-        .then((data)=>setDisplay(data))
+        const res= await fetch("http://localhost:3333/food").then((result)=>{
+            result.json().then((resp)=>{
+                setDisplay(resp)
+                setFname(resp[0].fname)
+                setFdetails(resp[0].fdetail)
+                setFcal(resp[0].fcal);
+            })
+        })
     }
+
+    const [open, setOpen] = React.useState(false);
+
+  function editProduct  (id) {
+    setOpen(true);
+    console.warn("function called",display[id-1])
+    let item= display[id-1];
+    setFname(item.fname)
+    setFdetails(item.fdetail)
+    setFcal(item.fcal)
+   
+  };
+
+  const handleClose =() => {
+    setOpen(false);
+  };
+
+
     
     
 
@@ -66,7 +103,7 @@ function Food() {
                 </div>
                 
 
-
+               
             </div>
             <div style={{display:"flex",flex:7,height:"100vh",flexDirection:"column"}}>
                 <h1 style={{display:"flex",justifyContent:"center"}}>List of Food</h1>
@@ -117,15 +154,30 @@ function Food() {
                         <p >{post.fname}</p>
                         <p>{post.fdetail}</p>
                         <p>{post.fcal}</p>
-                        <Link to={"Editfood/"+post.id}>
+                          {/* <Link to={"Prefilled"+post.id}>   */}
                         <Button 
-                        // onClick={()=>history.push("Editfood")}
+                        onClick={() => editProduct(post.id)}
+                       // onClick={handleClickOpen}
+                        //onClick={()=>history.push("Editfood")}
                         color="primary"    
                         startIcon={<EditIcon />}
                         variant="contained" 
                          >    
                         </Button>
-                        </Link>
+                         <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Food Details</DialogTitle>
+        <DialogContent>
+            <div>
+            <form>
+                    <input type="text" placeholder="Name" value={fname}/> <br /> <br />
+                    <input type="text" placeholder="Details" value={fdetail} /> <br /> <br />
+                    <input type="number" placeholder="Calorie" value={fcal} /> <br /> <br />
+                    <button>Update food</button>
+            </form>
+            </div>
+        </DialogContent>
+      </Dialog>
+                          {/* </Link>  */}
                         <Button 
                         color="primary"
                         startIcon={<DeleteIcon />}
