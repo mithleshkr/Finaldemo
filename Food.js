@@ -69,7 +69,7 @@ function Food() {
 
             </div>
             <div style={{display:"flex",flex:7,height:"100vh",flexDirection:"column"}}>
-                <h1 style={{display:"flex",justifyContent:"center",backgroundColor:"whitesmoke"}}>List of Food</h1>
+                <h1 style={{display:"flex",justifyContent:"center"}}>List of Food</h1>
                 {/* <tr style={{display:"flex",flexDirection:"row",justifyContent:"space-around",marginRight:300}}>
                     <td >Name</td>
                     </tr>
@@ -80,19 +80,19 @@ function Food() {
                     <td >Calorie</td>
                 </tr> */}
                 <div style={{display:"flex",flexDirection:"row"}}>
-               <table style={{display:"flex",flexDirection:"row",marginLeft:100}}>
+               <table style={{display:"flex",flexDirection:"row",marginLeft:150}}>
                    <tr >
                        <th>Name</th>
                        
                    </tr>
                    </table>
-                   <table style={{display:"flex",flexDirection:"row",marginLeft:200}}>
+                   <table style={{display:"flex",flexDirection:"row",marginLeft:150}}>
                    <tr >
                        <th>Details</th>
                        
                    </tr>
                    </table>
-                   <table style={{display:"flex",flexDirection:"row",marginLeft:170}}>
+                   <table style={{display:"flex",flexDirection:"row",marginLeft:150}}>
                    <tr >
                        <th>Calorie</th>
                        
@@ -111,7 +111,7 @@ function Food() {
                         
                         
 
-                        <card style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-around",flex:1,border:"2px solid grey",backgroundColor:"whitesmoke"}}>
+                        <card style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly",flex:1,backgroundColor:"whitesmoke"}}>
                         {/* <p>{post.id}</p> */}
                         
                         <p >{post.fname}</p>
