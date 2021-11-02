@@ -30,6 +30,7 @@ function Food() {
     const [fname, setFname] = useState("");
     const [fdetail, setFdetails] = useState("");
     const [fcal, setFcal] = useState("");
+    const [userId, setUserId]= useState(null)
 
     useEffect(()=>{
         showDetails();
@@ -55,6 +56,7 @@ function Food() {
                 setFname(resp[0].fname)
                 setFdetails(resp[0].fdetail)
                 setFcal(resp[0].fcal);
+                setUserId(resp[0].id)
             })
         })
     }
@@ -68,8 +70,27 @@ function Food() {
     setFname(item.fname)
     setFdetails(item.fdetail)
     setFcal(item.fcal)
+    setUserId(item.id)
    
   };
+
+  function updateUser (){
+      let item={fname, fdetail, fcal, userId}
+      fetch(`http://localhost:3333/food/${userId}`,{
+          method: 'PUT',
+          headers:{
+              'Accept':'application/json',
+              'Content-Type':'application/json'
+          },
+          body:JSON.stringify(item)
+      }).then((result)=>{
+          result.json().then((resp)=>{
+              console.warn(resp)
+              showDetails()
+              alert("Update Successfully")
+          })
+      })
+  }
 
   const handleClose =() => {
     setOpen(false);
@@ -167,12 +188,12 @@ function Food() {
                          <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Food Details</DialogTitle>
         <DialogContent>
-            <div>
-            <form>
-                    <input type="text" placeholder="Name" value={fname}/> <br /> <br />
-                    <input type="text" placeholder="Details" value={fdetail} /> <br /> <br />
-                    <input type="number" placeholder="Calorie" value={fcal} /> <br /> <br />
-                    <button>Update food</button>
+            <div style={{display:"flex",justifyContent:"center"}}>
+            <form style={{display:"flex",flexDirection:"column"}}>
+                    <input type="text" placeholder="Name" value={fname} onChange={(e)=>setFname(e.target.value)} /> <br /> <br />
+                    <input type="text" placeholder="Details" value={fdetail} onChange={(e)=>setFdetails(e.target.value)} /> <br /> <br />
+                    <input type="number" placeholder="Calorie" value={fcal} onChange={(e)=>setFcal(e.target.value)} /> <br /> <br />
+                    <Button variant="contained" color="primary" size="small" type="button" onClick={updateUser}>Update food</Button>
             </form>
             </div>
         </DialogContent>
