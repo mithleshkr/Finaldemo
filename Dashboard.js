@@ -44,25 +44,25 @@ function Dashboard() {
 
             </div>
             <div style={{display:"flex",flex:7,height:"100vh",flexDirection:"column"}}>
-               <div style={{display:"flex",flexDirection:"row",justifyContent:"space-evenly",marginTop:60}}>
-                   <div style={{height:"80vh",backgroundColor:"whitesmoke",width:"300px"}}>
+               <div style={{display:"flex",flexDirection:"row",justifyContent:"space-evenly",marginTop:150}}>
+                   <div style={{height:"50vh",backgroundColor:"whitesmoke",width:"300px"}}>
                         <div style={{display:"flex",justifyContent:"center"}}>
-                            <h1>1</h1>
+                            <h1 style={{fontSize:"100px"}}>1</h1>
                         </div>
-                        <div style={{display:"flex",marginTop:350,justifyContent:"center"}}>
+                        <div style={{display:"flex",marginTop:100,justifyContent:"center"}}>
                             <p>Total Number of User</p>
                         </div>
 
                    </div>
-                   <div style={{height:"80vh",backgroundColor:"whitesmoke",width:"300px"}}>
+                   <div style={{height:"50vh",backgroundColor:"whitesmoke",width:"300px"}}>
                         <div style={{display:"flex",justifyContent:"center"}}>
-                            <h1>2</h1>
+                            <h1 style={{fontSize:"100px"}}>2</h1>
                         </div>
-                        <div style={{display:"flex",marginTop:350,justifyContent:"center"}}>
+                        <div style={{display:"flex",marginTop:100,justifyContent:"center"}}>
                             <p>Total number of Food</p>
                         </div>
                    </div>
-                   <div style={{height:"80vh",backgroundColor:"whitesmoke",width:"300px"}}>
+                   <div style={{height:"50vh",backgroundColor:"whitesmoke",width:"300px"}}>
                        <div style={{display:"flex",justifyContent:"space-evenly"}}>
                         <div>
                             <p>Name</p>
@@ -85,7 +85,7 @@ function Dashboard() {
                         
                         )
                     })}
-                        <div style={{display:"flex",justifyContent:"center",marginTop:300,alignItems:"center"}}>
+                        <div style={{display:"flex",justifyContent:"center",marginTop:250,alignItems:"center"}}>
                             <p>Recently Added User</p>
                         </div>
                    </div>
