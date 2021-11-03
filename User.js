@@ -6,9 +6,23 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import {Link} from 'react-router-dom';
 import Userpopup from './Userpopup';
 
+import { Dialog } from "@material-ui/core";
+import { DialogContent } from "@material-ui/core";
+
+import { DialogTitle } from "@material-ui/core";
+
 function User() {
 
     const [display, setDisplay] = useState([]);
+
+    const [uname, setUname] = useState("");
+    const [age, setAge] = useState("");
+    const [height, setHeight] = useState("");
+    const [weight, setWeight] =useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState ("");
+    const [userId, setUserId] = useState(null)
+
     useEffect(()=>{
         showDetails();
 
@@ -25,10 +39,55 @@ function User() {
     }
 
     const showDetails = async() => {
-        const res= await fetch("http://localhost:3333/user")
-        .then((res)=>res.json())
-        .then((data)=>setDisplay(data))
+        const res= await fetch("http://localhost:3333/user").then((result)=>{
+            result.json().then((resp)=>{
+                setDisplay(resp)
+                // setFname(resp[0].fname)
+                // setFdetails(resp[0].fdetail)
+                // setFcal(resp[0].fcal);
+                // setUserId(resp[0].id)
+            })
+        })
     }
+
+    const [open, setOpen] = React.useState(false);
+
+    function editProduct  (id) {
+      setOpen(true);
+      console.warn("function called",display[id-1])
+      let item= display[id-1];
+      setUname(item.uname)
+      setAge(item.age)
+      setHeight(item.height)
+      setWeight(item.weight)
+      setUsername(item.username)
+      setPassword(item.password)
+      setUserId(item.id)
+     
+    };
+  
+    function updateUser (){
+        let item={uname, age, height, weight, username, password, userId}
+        fetch(`http://localhost:3333/user/${userId}`,{
+            method: 'PUT',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(item)
+        }).then((result)=>{
+            result.json().then((resp)=>{
+                console.warn(resp)
+                showDetails()
+                alert("Update Successfully")
+            })
+        })
+    }
+  
+    const handleClose =() => {
+      setOpen(false);
+    };
+  
 
 
     const history=useHistory();
@@ -54,7 +113,7 @@ function User() {
                 </div>
             </div>
                 <div style={{display:"flex",flex:7,height:"100vh",flexDirection:"column"}}>
-                <h1 style={{display:"flex",justifyContent:"center",backgroundColor:"whitesmoke"}}>List of User</h1>
+                <h1 style={{display:"flex",justifyContent:"center"}}>List of User</h1>
                 {/* <tr style={{display:"flex",flexDirection:"row",justifyContent:"space-around",marginRight:300}}>
                     <td >Name</td>
                     </tr>
@@ -65,7 +124,7 @@ function User() {
                     <td >Calorie</td>
                 </tr> */}
                 <div style={{display:"flex",flexDirection:"row"}}>
-               <table style={{display:"flex",flexDirection:"row",marginLeft:50}}>
+               <table style={{display:"flex",flexDirection:"row",marginLeft:100}}>
                    <tr >
                        <th>Name</th>
                        
@@ -95,7 +154,7 @@ function User() {
                        
                    </tr>
                    </table>
-                   <table style={{display:"flex",flexDirection:"row",marginLeft:120}}>
+                   <table style={{display:"flex",flexDirection:"row",marginLeft:80}}>
                    <tr >
                        <th>password</th>
                        
@@ -114,7 +173,7 @@ function User() {
                         
                         
 
-                        <card style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-around",flex:1,border:"2px solid grey",backgroundColor:"whitesmoke"}}>
+                        <card style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-evenly",flex:1,backgroundColor:"whitesmoke"}}>
                         
                         
                         <p>{post.uname}</p>
@@ -123,15 +182,30 @@ function User() {
                         <p>{post.weight}</p>
                         <p>{post.username}</p>
                         <p>{post.password}</p>
-                        <Link to={"Edituser/"+post.id}>
+                        {/* <Link to={"Edituser/"+post.id}> */}
                         <Button 
-                        
+                        onClick={() => editProduct(post.id)}
                         color="primary"    
                         startIcon={<EditIcon />}
                         variant="contained" 
                          >    
                         </Button>
-                        </Link>
+
+                        <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>User Details</DialogTitle>
+        <DialogContent>
+            <div style={{display:"flex",justifyContent:"center"}}>
+            <form style={{display:"flex",flexDirection:"column"}}>
+                    <input type="text" placeholder="Name" value={uname} onChange={(e)=>setUname(e.target.value)} /> <br /> <br />
+                    <input type="text" placeholder="Details" value={age} onChange={(e)=>setAge(e.target.value)} /> <br /> <br />
+                    <input type="number" placeholder="Calorie" value={height} onChange={(e)=>setHeight(e.target.value)} /> <br /> <br />
+                    <Button variant="contained" color="primary" size="small" type="button" onClick={updateUser}>Update food</Button>
+            </form>
+            </div>
+        </DialogContent>
+      </Dialog>
+
+                        {/* </Link> */}
                         <Button 
                         
                         color="primary"
