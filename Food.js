@@ -53,10 +53,10 @@ function Food() {
         const res= await fetch("http://localhost:3333/food").then((result)=>{
             result.json().then((resp)=>{
                 setDisplay(resp)
-                setFname(resp[0].fname)
-                setFdetails(resp[0].fdetail)
-                setFcal(resp[0].fcal);
-                setUserId(resp[0].id)
+                // setFname(resp[0].fname)
+                // setFdetails(resp[0].fdetail)
+                // setFcal(resp[0].fcal);
+                // setUserId(resp[0].id)
             })
         })
     }
