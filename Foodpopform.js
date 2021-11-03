@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField,Button } from "@material-ui/core";
 
 
@@ -7,6 +7,7 @@ function Foodpopform() {
   const [fdetail, setFdetails] = useState("");
   const [fcal, setFcal] = useState("");
 
+  
   function save() {
     console.warn({ fname, fdetail, fcal });
     let data={fname, fdetail, fcal}
@@ -23,6 +24,27 @@ function Foodpopform() {
 
      })
   }
+  useEffect(() => {
+    
+    function save() {
+      console.warn({ fname, fdetail, fcal });
+      let data={fname, fdetail, fcal}
+      fetch("http://localhost:3333/food",{
+          method:'POST',
+          headers:{
+              'Accept':'application/json',
+              'Content-Type':'application/json'
+          },
+          body:JSON.stringify(data)
+       }).then((result)=>{
+           console.warn("result",result);
+          
+  
+       })
+    }
+    
+  
+  },[])
   return (
     <div>
       <form style={{display:"flex",flexDirection:"column",justifyContent:"center"}}>
@@ -51,7 +73,7 @@ function Foodpopform() {
         <TextField
           label="Calorie"
           placeholder="Enter Food Calorie"
-          type="text"
+          type="number"
           value={fcal}
           onChange={(e) => {
             setFcal(e.target.value);
@@ -60,7 +82,9 @@ function Foodpopform() {
         />{" "}
         <br /> <br />
         <br /> <br />
-        <Button variant="contained" color="primary" type="button" onClick={save}>
+        <Button 
+        disabled={!fcal}
+        variant="contained" color="primary" type="submit" onClick={save}>
           Save
         </Button>
       </form>
