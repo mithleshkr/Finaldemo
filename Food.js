@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import {Tab,Tabs, Button} from '@material-ui/core';
+import {Tab,Tabs, Button, TextField} from '@material-ui/core';
 import  EditIcon  from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
@@ -190,9 +190,9 @@ function Food() {
         <DialogContent>
             <div style={{display:"flex",justifyContent:"center"}}>
             <form style={{display:"flex",flexDirection:"column"}}>
-                    <input type="text" placeholder="Name" value={fname} onChange={(e)=>setFname(e.target.value)} /> <br /> <br />
-                    <input type="text" placeholder="Details" value={fdetail} onChange={(e)=>setFdetails(e.target.value)} /> <br /> <br />
-                    <input type="number" placeholder="Calorie" value={fcal} onChange={(e)=>setFcal(e.target.value)} /> <br /> <br />
+                    <TextField type="text" label="Food Name" placeholder="Name" value={fname} onChange={(e)=>setFname(e.target.value)} /> <br /> <br />
+                    <TextField type="text" label="Details" placeholder="Details" value={fdetail} onChange={(e)=>setFdetails(e.target.value)} /> <br /> <br />
+                    <TextField type="number" label="Calorie" color="primary" placeholder="Calorie" value={fcal} onChange={(e)=>setFcal(e.target.value)} /> <br /> <br />
                     <Button variant="contained" color="primary" size="small" type="button" onClick={updateUser}>Update food</Button>
             </form>
             </div>
