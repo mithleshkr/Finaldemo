@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import {Tabs,Tab, Button} from '@material-ui/core';
+import {Tabs,Tab, Button, TextField} from '@material-ui/core';
 import {useHistory} from 'react-router-dom';
 import  EditIcon  from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -181,7 +181,7 @@ function User() {
                         <p>{post.height}</p>
                         <p>{post.weight}</p>
                         <p>{post.username}</p>
-                        <p>{post.password}</p>
+                        <p type="password">{post.password}</p>
                         {/* <Link to={"Edituser/"+post.id}> */}
                         <Button 
                         onClick={() => editProduct(post.id)}
@@ -196,10 +196,19 @@ function User() {
         <DialogContent>
             <div style={{display:"flex",justifyContent:"center"}}>
             <form style={{display:"flex",flexDirection:"column"}}>
-                    <input type="text" placeholder="Name" value={uname} onChange={(e)=>setUname(e.target.value)} /> <br /> <br />
-                    <input type="text" placeholder="Details" value={age} onChange={(e)=>setAge(e.target.value)} /> <br /> <br />
-                    <input type="number" placeholder="Calorie" value={height} onChange={(e)=>setHeight(e.target.value)} /> <br /> <br />
-                    <Button variant="contained" color="primary" size="small" type="button" onClick={updateUser}>Update food</Button>
+                    
+                    <TextField type="text" label="User Name" placeholder="Name" value={uname} onChange={(e)=>setUname(e.target.value)} />  <br />
+                    
+                    <TextField type="number" label="Age" placeholder="Age" value={age} onChange={(e)=>setAge(e.target.value)} />  <br />
+                    
+                    <TextField type="number" label="Height" placeholder="Height" value={height} onChange={(e)=>setHeight(e.target.value)} /> <br />
+                    
+                    <TextField type="number" label="Weight" placeholder="Weight" value={weight} onChange={(e)=>setWeight(e.target.value)} /> <br />
+                    
+                    <TextField type="text" label="UserName" placeholder="UserName" value={username} onChange={(e)=>setUsername(e.target.value)} /> <br />
+                    
+                    <TextField type="password" label="Password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} />  <br />
+                    <Button variant="contained" color="primary" size="small" type="button" onClick={updateUser}>Update User</Button>
             </form>
             </div>
         </DialogContent>
@@ -207,7 +216,7 @@ function User() {
 
                         {/* </Link> */}
                         <Button 
-                        
+                        type="submit"
                         color="primary"
                         startIcon={<DeleteIcon />}
                         variant="contained"
