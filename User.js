@@ -208,7 +208,7 @@ function User() {
                     <TextField type="text" label="UserName" placeholder="UserName" value={username} onChange={(e)=>setUsername(e.target.value)} /> <br />
                     
                     <TextField type="password" label="Password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} />  <br />
-                    <Button variant="contained" color="primary" size="small" type="button" onClick={updateUser}>Update User</Button>
+                    <Button variant="contained" color="primary" size="small" type="submit" onClick={updateUser}>Update User</Button>
             </form>
             </div>
         </DialogContent>
@@ -216,11 +216,11 @@ function User() {
 
                         {/* </Link> */}
                         <Button 
-                        type="submit"
+                        
                         color="primary"
                         startIcon={<DeleteIcon />}
                         variant="contained"
-                        onClick={()=>deleteUser(post.id)}></Button>
+                        onClick={()=>deleteUser(post.id) + window.location.reload(false)}></Button>
                         </card>
                         
                         
