@@ -199,11 +199,12 @@ function Food() {
         </DialogContent>
       </Dialog>
                           {/* </Link>  */}
-                        <Button 
+                        <Button
+                        type="submit" 
                         color="primary"
                         startIcon={<DeleteIcon />}
                         variant="contained"
-                        onClick={()=>deleteUser(post.id)}></Button>
+                        onClick={()=>deleteUser(post.id) + window.location.reload(false)}></Button>
                         </card>
                         
                         
