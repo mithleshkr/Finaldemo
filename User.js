@@ -181,7 +181,7 @@ function User() {
                         <p>{post.height}</p>
                         <p>{post.weight}</p>
                         <p>{post.username}</p>
-                        <p type="password">{post.password}</p>
+                        <p>{post.password}</p>
                         {/* <Link to={"Edituser/"+post.id}> */}
                         <Button 
                         onClick={() => editProduct(post.id)}
@@ -208,7 +208,7 @@ function User() {
                     <TextField type="text" label="UserName" placeholder="UserName" value={username} onChange={(e)=>setUsername(e.target.value)} /> <br />
                     
                     <TextField type="password" label="Password" placeholder="Password" value={password} onChange={(e)=>setPassword(e.target.value)} />  <br />
-                    <Button variant="contained" color="primary" size="small" type="submit" onClick={updateUser}>Update User</Button>
+                    <Button variant="contained" color="primary" size="small" type="button" disabled={!uname + !age + !height + !weight + !username + !password} onClick={updateUser }>Update User</Button>
             </form>
             </div>
         </DialogContent>
@@ -220,7 +220,7 @@ function User() {
                         color="primary"
                         startIcon={<DeleteIcon />}
                         variant="contained"
-                        onClick={()=>deleteUser(post.id) + window.location.reload(false)}></Button>
+                        onClick={()=>deleteUser(post.id) + window.location.reload(false)+ alert("deleted")}></Button>
                         </card>
                         
                         
