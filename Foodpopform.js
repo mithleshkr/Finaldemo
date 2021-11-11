@@ -45,6 +45,20 @@ function Foodpopform() {
     
   
   },[])
+
+
+  const nameChangeHandler = (e) => {
+
+    if (e.target.value.match(/[a-z]/i) || e.target.value === '') {
+
+      setFname(e.target.value);
+
+    }
+      
+
+
+    }
+
   return (
     <div>
       <form style={{display:"flex",flexDirection:"column",justifyContent:"center"}}>
@@ -53,9 +67,8 @@ function Foodpopform() {
           placeholder="Enter Food Name"
           type="text"
           value={fname}
-          onChange={(e) => {
-            setFname(e.target.value);
-          }}
+          onChange={(e) => nameChangeHandler(e)}
+          
           name="ptitle"
         />{" "}
         <br /> <br />
