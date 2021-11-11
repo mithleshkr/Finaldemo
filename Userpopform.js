@@ -113,7 +113,7 @@ function Userpopform() {
         <br /> 
         <Button 
         
-        disabled={!password}
+        disabled={!password + !uname + !age + !height + !weight + !username }
         variant="contained" color="primary" type="submit" onClick={save}>
           Save
         </Button>
