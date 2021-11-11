@@ -26,6 +26,21 @@ function Userpopform() {
 
      })
   }
+
+  const nameChangeHandler = (e) => {
+
+    if (e.target.value.match(/[a-z]/i) || e.target.value === '') {
+
+      setUname(e.target.value);
+
+    }
+      
+
+
+    }
+
+  
+
   return (
     <div>
       <form style={{display:"flex",flexDirection:"column",justifyContent:"center"}}>
@@ -33,13 +48,13 @@ function Userpopform() {
           label="User Name"
           placeholder="Enter User Name"
           type="text"
+          pattern="[a-zA-Z]*"
+          
           value={uname}
-          onChange={(e) => {
-            setUname(e.target.value);
-          }}
+          onChange={(e) => nameChangeHandler(e)}
           name="uname"
         />{" "}
-        <br /> <br />
+        <br /> 
         <TextField
           label="Age"
           placeholder="Enter User Age"
@@ -50,18 +65,18 @@ function Userpopform() {
           }}
           name="age"
         />{" "}
-        <br /> <br />
+        <br /> 
         <TextField
-          label="height"
+          label="height in cm"
           placeholder="Enter User Height"
-          type="text"
+          type="number"
           value={height}
           onChange={(e) => {
             setHeight(e.target.value);
           }}
           name="height"
         />{" "}
-        <br /> <br />
+        <br /> 
         <TextField
           label="weight"
           placeholder="Enter User Weight"
@@ -72,9 +87,9 @@ function Userpopform() {
           }}
           name="weight"
         />{" "}
-        <br /> <br />
+        <br />
         <TextField
-          label="usernamee"
+          label="username"
           placeholder="Enter Username"
           type="text"
           value={username}
@@ -83,19 +98,23 @@ function Userpopform() {
           }}
           name="username"
         />{" "}
-        <br /> <br />
+        <br /> 
         <TextField
+      
           label="password"
           placeholder="Enter User password"
-          type="text"
+          type="password"
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
           }}
           name="height"
         />{" "}
-        <br /> <br />
-        <Button variant="contained" color="primary" type="button" onClick={save}>
+        <br /> 
+        <Button 
+        
+        disabled={!password}
+        variant="contained" color="primary" type="submit" onClick={save}>
           Save
         </Button>
       </form>
