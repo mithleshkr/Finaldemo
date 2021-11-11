@@ -85,7 +85,7 @@ function Foodpopform() {
         <br /> <br />
         <TextField
           label="Calorie"
-          placeholder="Enter Food Calorie"
+          placeholder="Enter Food Calorie(Kcal)"
           type="number"
           value={fcal}
           onChange={(e) => {
@@ -96,7 +96,7 @@ function Foodpopform() {
         <br /> <br />
         <br /> <br />
         <Button 
-        disabled={!fcal}
+        disabled={!fcal + !fname + !fdetail}
         variant="contained" color="primary" type="submit" onClick={save}>
           Save
         </Button>
