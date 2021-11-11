@@ -102,6 +102,8 @@ function Food() {
 
 
     const history =useHistory();
+
+    
     return ( 
         <div style={{display:"flex",flex:1,height:"100vh"}}>
             <div className="sidebar" style={{display:"flex",flex:1,height:"100vh",flexDirection:"column"}}>
@@ -152,7 +154,7 @@ function Food() {
                    </table>
                    <table style={{display:"flex",flexDirection:"row",marginLeft:150}}>
                    <tr >
-                       <th>Calorie</th>
+                       <th>Calorie(Kcal)</th>
                        
                    </tr>
                    </table>
@@ -193,7 +195,7 @@ function Food() {
                     <TextField type="text" label="Food Name" placeholder="Name" value={fname} onChange={(e)=>setFname(e.target.value)} /> <br /> <br />
                     <TextField type="text" label="Details" placeholder="Details" value={fdetail} onChange={(e)=>setFdetails(e.target.value)} /> <br /> <br />
                     <TextField type="number" label="Calorie" color="primary" placeholder="Calorie" value={fcal} onChange={(e)=>setFcal(e.target.value)} /> <br /> <br />
-                    <Button variant="contained" color="primary" size="small" type="button" onClick={updateUser}>Update food</Button>
+                    <Button variant="contained" color="primary" size="small" type="button" disabled={!fcal + !fname + !fdetail} onClick={updateUser}>Update food</Button>
             </form>
             </div>
         </DialogContent>
@@ -204,7 +206,7 @@ function Food() {
                         color="primary"
                         startIcon={<DeleteIcon />}
                         variant="contained"
-                        onClick={()=>deleteUser(post.id) + window.location.reload(false)}></Button>
+                        onClick={()=>deleteUser(post.id) + window.location.reload(false)+ alert("deleted")}></Button>
                         </card>
                         
                         
