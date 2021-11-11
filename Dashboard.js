@@ -1,13 +1,18 @@
 import React,{useState, useEffect} from 'react'
 import {Tab,Tabs, Button} from '@material-ui/core';
 import {useHistory} from "react-router-dom";
+import { DirectionsRailway } from '@material-ui/icons';
 
 
 function Dashboard() {
 
     const [display, setDisplay] = useState([]);
+
+    const[fdisplay, setFdisplay] = useState([]);
+    
     useEffect(()=>{
         showDetails();
+        foodDetails();
 
     },[])
 
@@ -15,6 +20,12 @@ function Dashboard() {
         const res= await fetch("http://localhost:3333/user")
         .then((res)=>res.json())
         .then((data)=>setDisplay(data))
+        
+    }
+    const foodDetails = async() => {
+        const res= await fetch("http://localhost:3333/food")
+        .then((res)=>res.json())
+        .then((data)=>setFdisplay(data))
         
     }
     
@@ -47,19 +58,19 @@ function Dashboard() {
                <div style={{display:"flex",flexDirection:"row",justifyContent:"space-evenly",marginTop:150}}>
                    <div style={{height:"50vh",backgroundColor:"whitesmoke",width:"300px"}}>
                         <div style={{display:"flex",justifyContent:"center"}}>
-                            <h1 style={{fontSize:"100px"}}>1</h1>
+                            <h1 style={{fontSize:"100px"}}>{fdisplay.length}</h1>
                         </div>
                         <div style={{display:"flex",marginTop:100,justifyContent:"center"}}>
-                            <p>Total Number of User</p>
+                            <p>Total Number of Food</p>
                         </div>
 
                    </div>
                    <div style={{height:"50vh",backgroundColor:"whitesmoke",width:"300px"}}>
                         <div style={{display:"flex",justifyContent:"center"}}>
-                            <h1 style={{fontSize:"100px"}}>2</h1>
+                            <h1 style={{fontSize:"100px"}}>{display.length}</h1>
                         </div>
                         <div style={{display:"flex",marginTop:100,justifyContent:"center"}}>
-                            <p>Total number of Food</p>
+                            <p>Total number of User</p>
                         </div>
                    </div>
                    <div style={{height:"50vh",backgroundColor:"whitesmoke",width:"300px"}}>
