@@ -1,14 +1,16 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Avatar, Button, Grid ,Paper, TextField, Typography, Link} from '@material-ui/core';
 import LockRoundedIcon from '@material-ui/icons/LockRounded';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { Formik,Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
+import { useHistory } from "react-router-dom";
 import './Login.css'
 
 
 const Login = () => {
+    const history=useHistory();
     const paperstyle={padding:20,height:'60vh',width:280,margin:"20px auto"}
     const avatarstyle={backgroundColor:"blue"}
     const btnstyle={margin:'8px 0'}
@@ -27,6 +29,8 @@ const Login = () => {
         console.log(values)
         console.log(props)
     }
+    const[password, setPassword]=useState("");
+    const[usernm, setUsernm]=useState("");
 
 
     return(
@@ -46,6 +50,8 @@ const Login = () => {
                     label="Username"
                     name="username"
                     placeholder="Enter username"
+                    value={usernm}
+                    onChange={(e)=>setUsernm(e.target.value)}
                     fullWidth 
                     required />
                     <Field as={TextField}
@@ -54,6 +60,8 @@ const Login = () => {
                     name="password"
                     placeholder="Enter password" 
                     type="password" 
+                    value={password}
+            onChange={(e)=>setPassword(e.target.value)}
                     fullWidth 
                     required />
                     <Field as={FormControlLabel}
@@ -67,10 +75,12 @@ const Login = () => {
                     label="Remember me"
                     />
                     <Button 
+                    onClick={() => history.push("Dashboard")}
                     style={btnstyle}
                     type="submit"
                     color="primary"
                     variant="contained"
+                    disabled={!password + !usernm}
                     fullWidth>
                     LOGIN
                     </Button>
