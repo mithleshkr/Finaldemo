@@ -38,6 +38,7 @@ function Food() {
     },[])
     function deleteUser(id)
     {
+        
         fetch(`http://localhost:3333/food/${id}`,{
             method:'DELETE'
         }).then((result)=>{
@@ -62,6 +63,12 @@ function Food() {
     }
 
     const [open, setOpen] = React.useState(false);
+    const [dopen, setDopen] = React.useState(false);
+
+    function deletePop () {
+        setDopen(true);
+    }
+    
 
   function editProduct  (id) {
     setOpen(true);
@@ -95,6 +102,10 @@ function Food() {
   const handleClose =() => {
     setOpen(false);
   };
+
+  const delClose = () =>{
+      setDopen(false);
+  }
 
 
     
@@ -206,7 +217,18 @@ function Food() {
                         color="primary"
                         startIcon={<DeleteIcon />}
                         variant="contained"
-                        onClick={()=>deleteUser(post.id) + window.location.reload(false)+ alert("deleted")}></Button>
+                        onClick={()=>deletePop(post.id) }>
+                        </Button>
+                        <Dialog open={dopen} onClose={delClose}>
+                        {/* <DialogTitle>Food</DialogTitle> */}
+                        <DialogContent>
+                            <p>Are You sure want to delete?</p>
+                            <div style={{display:"flex",justifyContent:"space-between"}}>
+                            <Button onClick={()=>deleteUser(post.id) + window.location.reload(false)}  variant="contained" color="primary" >Delete</Button>
+                            <Button onClick={()=>  window.location.reload(false)} type="submit" variant="contained" color="primary">Cancel</Button>
+                            </div>
+                        </DialogContent>
+                        </Dialog>
                         </card>
                         
                         
