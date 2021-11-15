@@ -51,6 +51,13 @@ function User() {
     }
 
     const [open, setOpen] = React.useState(false);
+    const [dopen, setDopen] = React.useState(false);
+
+    function deletePop () {
+        setDopen(true);
+    }
+
+
 
     function editProduct  (id) {
       setOpen(true);
@@ -87,7 +94,9 @@ function User() {
     const handleClose =() => {
       setOpen(false);
     };
-  
+    const delClose = () =>{
+        setDopen(false);
+    }
 
 
     const history=useHistory();
@@ -130,36 +139,31 @@ function User() {
                        
                    </tr>
                    </table>
-                   <table style={{display:"flex",flexDirection:"row",marginLeft:90}}>
+                   <table style={{display:"flex",flexDirection:"row",marginLeft:120}}>
                    <tr >
                        <th>Age</th>
                        
                    </tr>
                    </table>
-                   <table style={{display:"flex",flexDirection:"row",marginLeft:60}}>
+                   <table style={{display:"flex",flexDirection:"row",marginLeft:80}}>
                    <tr >
                        <th>Height(cm)</th>
                        
                    </tr>
                    </table>
-                   <table style={{display:"flex",flexDirection:"row",marginLeft:30}}>
+                   <table style={{display:"flex",flexDirection:"row",marginLeft:40}}>
                    <tr >
-                       <th>Weight</th>
+                       <th>Weight(kg)</th>
                        
                    </tr>
                    </table>
-                   <table style={{display:"flex",flexDirection:"row",marginLeft:70}}>
+                   <table style={{display:"flex",flexDirection:"row",marginLeft:60}}>
                    <tr >
                        <th>username</th>
                        
                    </tr>
                    </table>
-                   <table style={{display:"flex",flexDirection:"row",marginLeft:80}}>
-                   <tr >
-                       <th>password</th>
-                       
-                   </tr>
-                   </table>
+                   
                    </div>
             {display.map(post =>{
                 return(
@@ -181,7 +185,7 @@ function User() {
                         <p>{post.height}</p>
                         <p>{post.weight}</p>
                         <p>{post.username}</p>
-                        <p>{post.password}</p>
+                        {/* <p>{post.password}</p> */}
                         {/* <Link to={"Edituser/"+post.id}> */}
                         <Button 
                         onClick={() => editProduct(post.id)}
@@ -220,7 +224,17 @@ function User() {
                         color="primary"
                         startIcon={<DeleteIcon />}
                         variant="contained"
-                        onClick={()=>deleteUser(post.id) + window.location.reload(false)+ alert("deleted")}></Button>
+                        onClick={()=>deletePop(post.id) }></Button>
+                        <Dialog open={dopen} onClose={delClose}>
+                        {/* <DialogTitle>Food</DialogTitle> */}
+                        <DialogContent>
+                            <p>Are You sure want to delete?</p>
+                            <div style={{display:"flex",justifyContent:"space-between"}}>
+                            <Button onClick={()=>deleteUser(post.id) + window.location.reload(false)}  variant="contained" color="primary" >Delete</Button>
+                            <Button onClick={()=>  window.location.reload(false)} type="submit" variant="contained" color="primary">Cancel</Button>
+                            </div>
+                        </DialogContent>
+                        </Dialog>
                         </card>
                         
                         
